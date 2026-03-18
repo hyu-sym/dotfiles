@@ -8,7 +8,8 @@
 
 ```
 dotfiles/
-└── init.lua       # Neovim 설정 파일
+├── init.lua                           # Neovim 설정 파일
+└── Microsoft.PowerShell_profile.ps1   # PowerShell 7 프로필
 ```
 
 ---
@@ -66,7 +67,7 @@ nvim
 
 ---
 
-## ⌨️ 단축키
+## ⌨️ 단축키 (Neovim)
 
 | 단축키 | 기능 |
 |--------|------|
@@ -76,7 +77,46 @@ nvim
 
 ---
 
-## 📝 참고
+## 📝 참고 (Neovim)
 
 - 아이콘이 깨져 보이면 [Nerd Font](https://www.nerdfonts.com/) 설치 후 터미널 폰트로 설정
 - 플러그인은 `lazy.nvim`이 자동으로 `~/.local/share/nvim/` (또는 Windows의 경우 `%LOCALAPPDATA%\nvim-data\`)에 설치함
+
+---
+
+## ⚙️ PowerShell 설정
+
+### 설치 경로
+
+| OS | 경로 |
+|----|------|
+| Windows (PS 7) | `C:\Users\<사용자명>\Documents\PowerShell\Microsoft.PowerShell_profile.ps1` |
+
+### 설정 내용
+
+| 항목 | 내용 |
+|------|------|
+| `claude` 함수 | 프로젝트 폴더로 이동 후 claude.exe 실행 |
+| PostgreSQL 인코딩 | `PGCLIENTENCODING=UTF8`, 콘솔 UTF-8 설정 |
+| `notepad++` alias | Notepad++ 실행 경로 alias |
+
+### 새 PC에서 설정 적용하기
+
+#### 1. PowerShell 7 설치
+
+```powershell
+winget install Microsoft.PowerShell
+```
+
+#### 2. 프로필 폴더 생성 및 파일 복사
+
+```powershell
+New-Item -ItemType Directory -Path "$HOME\Documents\PowerShell" -Force
+Copy-Item "Microsoft.PowerShell_profile.ps1" "$HOME\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
+```
+
+#### 3. pwsh 재시작 후 확인
+
+```powershell
+cat $PROFILE
+```
