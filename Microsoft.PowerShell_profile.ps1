@@ -16,8 +16,10 @@ $env:EDITOR = "nvim"
 
 # Obsidian path 이동 설정
 function obs_cd {
-    $result = notesmd-cli print-default --path-only
-    if ($result) {
-        Set-Location $result
+    Set-Location "C:\Users\HYU\Documents\999_sym\obsidian-memo"
     }
-}
+
+# Claude Code Projects path 이동 설정
+function ccp_cd {
+    Set-Location "C:\Users\HYU\Documents\99_claude_projects"
+    }
