@@ -10,3 +10,14 @@ chcp 65001 | Out-Null
 
 # Notepad++ 설정
  Set-Alias notepad++ "C:\Program Files\Notepad++\notepad++.exe"
+
+# 기본 editor 설정
+$env:EDITOR = "nvim"
+
+# Obsidian path 이동 설정
+function obs_cd {
+    $result = notesmd-cli print-default --path-only
+    if ($result) {
+        Set-Location $result
+    }
+}
